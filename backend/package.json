@@ -3,37 +3,44 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
-  "type": "module",
+  "type": "commonjs",
   "imports": {
     "@controllers/*": "./controllers/*",
     "@customTypes/*": "./types/*",
     "@models/*": "./models/*",
-    "@services/*": "./config/*",
+    "@services/*": "./services/*",
     "@routes/*": "./routes/*",
-    "@middlewares/*": "./middlewares/*"
+    "@middlewares/*": "./middlewares/*",
+    "@config/*": "./config/*"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "kafkajs": "^2.2.4",
+    "minio": "^8.0.6",
     "mongodb": "^6.20.0",
-    "mongoose": "^8.19.1"
+    "mongoose": "^8.19.1",
+    "redis": "^5.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-  "start": "node dist/server.js"
-  },
-  "keywords": [],
+    "build": "tsc && tsc-alias",
+    "start": "node dist/server.js"
+  
+},  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.7.1",
     "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   }

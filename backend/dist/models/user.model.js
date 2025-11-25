@@ -1,6 +1,11 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-const userSchema = new mongoose.Schema({
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const userSchema = new mongoose_1.default.Schema({
     fullName: { type: String, required: true },
     profileImageURL: { stype: String },
     email: { type: String, required: true, unique: true },
@@ -16,16 +21,16 @@ const userSchema = new mongoose.Schema({
     status: { type: String, enum: ["active", "inactive"], default: "active" },
     tileId: { type: String },
 }, { timestamps: true });
-const User = mongoose.model("User", userSchema);
+const User = mongoose_1.default.model("User", userSchema);
 userSchema.pre('save', async function (next) {
     if (this.isModified('password')) {
-        const salt = await bcrypt.genSalt(10);
-        this.password = await bcrypt.hash(this.password, salt);
+        const salt = await bcryptjs_1.default.genSalt(10);
+        this.password = await bcryptjs_1.default.hash(this.password, salt);
     }
     next();
 });
 userSchema.methods.comparePassword = async function (candidatePassword) {
-    return bcrypt.compare(candidatePassword, this.password);
+    return bcryptjs_1.default.compare(candidatePassword, this.password);
 };
-export default User;
+exports.default = User;
 //# sourceMappingURL=user.model.js.map

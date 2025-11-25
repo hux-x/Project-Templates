@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import type { IUser } from "@customTypes/auth.js";
+import type { IUser } from "../types/auth.js";
 declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser, {}, {}> & IUser & Required<{
     _id: mongoose.Types.ObjectId;
 }> & {

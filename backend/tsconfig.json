@@ -22,6 +22,6 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "tsconfig-paths-loader.mjs"],
   "exclude": ["node_modules", "dist"]
 }
